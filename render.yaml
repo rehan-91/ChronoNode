@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: hrms-attendance
+    env: docker
+    region: frankfurt
+    plan: starter
+    healthCheckPath: /health
+    envVars:
+      - key: DB_CONNECTION
+        value: mysql
+      - key: LOG_CHANNEL
+        value: stderr
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: "false"
+      - key: APP_URL
+        # This will be automatically injected by Render or can be defined explicitly
+        value: "" 
+      - key: APP_KEY
+        generateValue: true
+      # Queue setup mapping
+      - key: QUEUE_CONNECTION
+        value: database
